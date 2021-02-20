@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="a37d40ce-db65-4321-812a-c22a9c0c53ea" name="aliyun" url="http://bs.radiology.link">
+        <fileTransfer rootFolder="/www/wwwroot/bysj" accessType="SFTP" host="47.102.103.185" port="22" sshConfigId="3bcca320-e0da-4555-be14-93f8eaf7622f" sshConfig="root@47.102.103.185:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
