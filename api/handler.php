@@ -15,7 +15,7 @@ class RestHandler extends SimpleRest {
         return json_encode($responseData);
     }
  
-    public function login($username,$password) {  
+    public function login($username,$password) {
     	$conn = new mysqli($this->server, $this->dbUser, $this->dbPass, $this->dbName);
         $stmt = $conn->prepare("SELECT * FROM userinfo WHERE username =? AND password=?");
         $stmt ->bind_param("ss", $username, $password);
@@ -79,6 +79,7 @@ class RestHandler extends SimpleRest {
         $stmt -> execute ();
         $stmt -> bind_result ($chose,$upload,$comment,$graduate);
         $stmt -> store_result ();
+        $stmt -> fetch ();
         if (!$stmt -> num_rows){
             $response = array("msg"=>'2001');
             $response = $this->encodeJson ($response);

@@ -342,8 +342,21 @@
             }
         })
     }
-    function  () {
+    function overview() {
+        $.ajax({
+            url:"https://bs.radiology.link/api/graduation.php/",
+            type:"GET",
+            async:false,
+            data:{
+                "do":"overview",
+                "username": <?php echo $_SESSION['username']?>
+            },
+            success:function (data) {
+                let chose = JSON.parse(data).chose;
+            }
 
+
+        })
     }
 </script>
 
