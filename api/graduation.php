@@ -1,16 +1,16 @@
 <?php
-// api.radiology.link/api/?do= /
 require_once("handler.php");
 header('Access-Control-Allow-Origin:*');
 $do = "";
+
 if(isset($_GET["do"]))
     $do = $_GET["do"];
-/*
- * RESTful service 控制器
- * URL 映射 Version 0.3
-*/
 
 switch($do){
+
+    default:
+        echo "Welcome To RestHandler Ver 0.1";
+        break;
  
     case "login":
         // 处理 Login /
@@ -29,15 +29,36 @@ switch($do){
         break;
 
     case "index_query":
-        $username = $_GET['username'];
+        // 首页三项查询 /
         $RestHandler = new RestHandler();
-        $RestHandler -> index_query($username);
+        $RestHandler -> index_query($_GET['username']);
         break;
 
     case "overview":
-        $username = $_GET['username'];
+        // 概览 /
         $RestHandler = new RestHandler();
-        $RestHandler -> overview($username);
+        $RestHandler -> overview($_GET['username']);
+        break;
+
+    case "checkMajor":
+        // 检查是专业列表 /
+        $RestHandler = new RestHandler();
+        $RestHandler -> checkMajor();
+        break;
+
+    case "createPaper":
+        $RestHandler = new RestHandler();
+        $RestHandler -> createPaper($_GET);
+        break;
+
+    case "downloadPrepare":
+        $RestHandler = new RestHandler();
+        $RestHandler -> downloadPrepare($_GET['username']);
+        break;
+
+    case "changePaper":
+        $RestHandler = new RestHandler();
+        $RestHandler -> changePaper($_GET);
         break;
 }
 ?>

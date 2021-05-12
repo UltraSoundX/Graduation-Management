@@ -27,7 +27,7 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="index.php"><img src="images/logo.svg" alt="logo"/></a>
+        <a class="navbar-brand brand-logo" href="http://www.sdfmu.edu.cn"><img src="http://www.sdfmu.edu.cn/static/images/logo.jpg" alt="logo"/></a>
         <a class="navbar-brand brand-logo-mini" href="index.php"><img src="images/logo-mini.svg" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-stretch">
@@ -56,12 +56,12 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="./index.php">
               <i class="mdi mdi-cached text-success"></i>
             </a>
           </li>
           <li class="nav-item nav-logout d-none d-lg-block">
-            <a class="nav-link" onclick="logout()">
+            <a class="nav-link" href="../index.php?exit=1">
               <i class="mdi mdi-power text-danger"></i>
             </a>
           </li>
@@ -74,10 +74,7 @@
         <ul class="nav">
           <li class="nav-item sidebar-actions">
             <span class="nav-link">
-              <div class="border-bottom">
-                <h6 class="font-weight-normal mb-3">开题申请</h6>
-              </div>
-              <button class="btn btn-block btn-lg btn-gradient-primary mt-4">+ 新建题目</button>
+                <a href="./create.php"><button class="btn btn-block btn-lg btn-gradient-primary mt-4">+ 新建题目</button></a>
             </span>
           </li>
           <li class="nav-item ">
@@ -221,7 +218,7 @@
                                             <h5 class="card-columns">开题申请</h5>
                                         </td>
                                         <td>
-                                            <h5 class="card-columns">《论文标题》</h5>
+                                            <h5 class="card-columns" id = "title">请新建题目</h5>
                                         </td>
                                         <td>
                                             <label class="badge badge-gradient-success">已完成</label>
@@ -232,10 +229,10 @@
                                             <h5 class="card-columns">双向选择</h5>
                                         </td>
                                         <td>
-                                            <h5 class="card-columns">待导师同意</h5>
+                                            <h5 class="card-columns" id = "choseMsg" >待导师同意</h5>
                                         </td>
                                         <td>
-                                            <label class="badge badge-gradient-warning">处理中</label>
+                                            <label class="badge badge-gradient-warning" id = "chose">处理中</label>
                                         </td>
                                     </tr>
                                     <tr>
@@ -243,10 +240,10 @@
                                             <h5 class="card-columns">论文上传</h5>
                                         </td>
                                         <td>
-                                            <h5 class="card-columns">暂未上传</h5>
+                                            <h5 class="card-columns" id = "uploadmsg">暂未上传</h5>
                                         </td>
                                         <td>
-                                            <label class="badge badge-gradient-danger">未完成</label>
+                                            <label class="badge badge-gradient-danger" id = "upload">未完成</label>
                                         </td>
                                     </tr>
                                     <tr>
@@ -254,10 +251,10 @@
                                             <h5 class="card-columns">指导意见</h5>
                                         </td>
                                         <td>
-                                            <h5 class="card-columns">暂未完成</h5>
+                                            <h5 class="card-columns" id ="commentmsg">暂无内容</h5>
                                         </td>
                                         <td>
-                                            <label class="badge badge-gradient-danger">未完成</label>
+                                            <label class="badge badge-gradient-danger" id ="comment">未完成</label>
                                         </td>
                                     </tr>
                                     <tr>
@@ -265,10 +262,10 @@
                                             <h5 class="card-columns">毕业去向</h5>
                                         </td>
                                         <td>
-                                            <h5 class="card-columns">暂未完成</h5>
+                                            <h5 class="card-columns" id = "graduatemsg">暂未完成</h5>
                                         </td>
                                         <td>
-                                            <label class="badge badge-gradient-danger">未完成</label>
+                                            <label class="badge badge-gradient-danger" id = "graduate">未完成</label>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -308,15 +305,24 @@
   <script src="js/dashboard.js"></script>
   <!-- End custom js for this page-->
 <style>
-.copyrights{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
 </style>
 </body>
 <script>
     var subject = null ; //定义课题标题
     var status = null;//内容进度
+
+    class Tools{
+        static ChangeClass(classTag,className) {
+            $(classTag).removeClass();
+            $(classTag).addClass(className);
+        }
+    }
+
     $(document).ready(function () {
         index_query();
+        overview();
     })
+
     function index_query() {
         $.ajax({
             url:"https://bs.radiology.link/api/graduation.php",
@@ -328,7 +334,7 @@
             },
             success:function (data) {
                 let msg = JSON.parse(data).msg;
-                if (msg == "2001"){
+                if (msg === "2001"){
                     subject = "暂未申请";
                     status = "新建项目";
                     $("#subject").html(subject);
@@ -342,6 +348,7 @@
             }
         })
     }
+
     function overview() {
         $.ajax({
             url:"https://bs.radiology.link/api/graduation.php/",
@@ -352,12 +359,68 @@
                 "username": <?php echo $_SESSION['username']?>
             },
             success:function (data) {
-                let chose = JSON.parse(data).chose;
+                let recv = new Array(5);
+                let i = 0;
+                $.each($.parseJSON(data),function (key,value){
+                    recv[i] = value;
+                    i++;
+                })
+                if (recv[0] === "2001") {
+                    Tools.ChangeClass("label","badge badge-gradient-danger")
+                    $("label").html("未完成");
+                } else if (recv[0] === "2000") {
+                    $('#title').html(subject);
+                    switch (recv[1]){
+                        case "-1":
+                            break;
+                        case "0":
+                            $("#choseMsg").html("请完成双向选择");
+                            $("#chose").html("未完成");
+                            Tools.ChangeClass("#chose","badge badge-gradient-danger");
+                            break;
+                        case "1":
+                            $("#choseMsg").html("双向选择已完成");
+                            $("#chose").html("已完成");
+                            Tools.ChangeClass("#chose","badge badge-gradient-success");
+                            break;
+                    }
+                    switch (recv[2]){
+                        case "0":break;
+                        case "1":
+                            $("#uploadmsg").html("已经上传");
+                            $("#upload").html("已完成");
+                            Tools.ChangeClass("#upload","badge badge-gradient-success");
+                            break;
+                    }
+                    switch (recv[3]){
+                        case "-1":
+                            $("#commentmsg").html("已经更新，请注意查收");
+                            Tools.ChangeClass("#comment","badge badge-gradient-warning");
+                            $("#comment").html("待完成");
+                            break;
+                        case "0":break;
+                        case "1":
+                            $("#commentmsg").html("导师已经结束修改流程");
+                            Tools.ChangeClass("#comment","badge badge-gradient-success");
+                            $("#comment").html("已完成");
+                            break;
+                    }
+                    switch (recv[4]){
+                        case "0":break;
+                        case "1":
+                            Tools.ChangeClass("#graduate","badge badge-gradient-success");
+                            $("#graduatemsg").html("恭喜毕业🎉 ！");
+                            $("#graduate").html("已完成");
+                            break;
+                    }
+
+
+                }
             }
-
-
         })
     }
+
+
 </script>
 
 </html>
