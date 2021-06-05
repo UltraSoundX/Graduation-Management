@@ -126,13 +126,12 @@
                     "password":password,
                 },
                 success: function(data){
+                    console.log(data);
                     let msg = JSON.parse(data).msg;
                     switch (msg) {
                         case '1000':
                             $("#Success").show();
-                            <?php
-                            header("Refresh:2;url=./index.php");
-                            ?>
+                            window.location.href = "http://bs.radiology.link/"
                             break;
                         case '1001':
                             $("#Error").html("注册失败");

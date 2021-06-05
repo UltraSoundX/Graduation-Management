@@ -55,7 +55,7 @@ class Verify {
         fwrite($resource,$content);
         fclose($resource);
         $md5FileName = md5_file($tmpFile);
-        $returnFile = './image/' . $md5FileName . '.jpg';
+        $returnFile = './verify_code/' . $md5FileName . '.jpg';
         copy($tmpFile, $returnFile);
         @unlink($tmpFile);
         $returnFile = $md5FileName.'.jpg';

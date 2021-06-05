@@ -105,7 +105,7 @@
 				success: function(data){
 					cookie = JSON.parse(data).Cookie;
                     img = JSON.parse(data).img;
-                    pic = "https://bs.radiology.link/api/image/"+img;
+                    pic = "https://bs.radiology.link/api/verify_code/"+img;
                     document.getElementById('img').src = pic ;
 				}
 			})           
