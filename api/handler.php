@@ -26,6 +26,7 @@ class RestHandler  {
             echo $response;
             $_SESSION['username'] = $username;
         } else {
+<<<<<<< HEAD
             $teacherLogin = $conn -> prepare("SELECT teacherName,teacherMajor From teacherInfo WHERE teacherNumber =? AND password =  ?");
             $teacherLogin -> bind_param("ss",$username,$password);
             $teacherLogin -> execute();
@@ -44,6 +45,11 @@ class RestHandler  {
                 $response = $this -> encodeJson($rawData);
                 echo $response;
             }
+=======
+        	$rawData = array ('msg'=>'1001');//请求失败
+            $response = $this -> encodeJson($rawData);
+            echo $response;
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
         }
     }
     
@@ -53,7 +59,11 @@ class RestHandler  {
 		$stmt -> bind_param("ss",$username,$password);
         if ($stmt -> execute()){
             $rawData = array ('msg'=>'1000');
+<<<<<<< HEAD
             $response = $this -> encodeJson($rawData);
+=======
+            $response = encodeJson($rawData);
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
             $_SESSION['username'] = $username;
             echo $response;
         } else {
@@ -107,6 +117,7 @@ class RestHandler  {
         } else {
             $response = array("msg"=>"2000","chose"=>$chose,"upload"=>$upload,"comment"=>$comment,"graduate"=>$graduate);
             $response = $this -> encodeJson ($response);
+<<<<<<< HEAD
             echo $response;
         }
         return 0;
@@ -171,6 +182,8 @@ class RestHandler  {
         if ($stmt -> num_rows !=0){
             $response = array("msg"=>"2000","studentName" => $studentName,"studentMajor" => $studentMajor,"paperTitle" => $paperTitle,"paperTips" => $paperTips,"prepareStatus"=>$prepareStatus);
             $response = $this -> encodeJson($response);
+=======
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
             echo $response;
             return 0;
         } else {
@@ -357,6 +370,76 @@ class RestHandler  {
         } else {
             $response = array("msg"=>"2001");
             echo $this->encodeJson($response);
+        }
+        return 0;
+    }
+
+    public function checkMajor():int
+    {
+        $conn = new mysqli($this -> server,$this -> dbName,$this -> dbPass,$this->dbName);
+        $stmt = $conn -> prepare ("SELECT `majorList` FROM `majorList` WHERE 1");
+        $stmt -> execute();
+        $stmt -> bind_result($major);
+        $stmt -> store_result();
+        $majorList = array();
+        while ($stmt -> fetch()){
+            array_push($majorList,$major);
+        }
+        $majorList = array("list" => $majorList);
+        $response = $this -> encodeJson($majorList);
+        echo $response;
+        return 0;
+    }
+
+    public function createPaper($GET):int{
+        $conn = new mysqli($this -> server,$this -> dbName,$this -> dbPass,$this->dbName);
+        $stmt = $conn -> prepare("INSERT INTO `prepareList`(`studentNumber`, `studentName`, `studentMajor`, `paperTitle`, `paperTips`, `prepareType`, `prepareStatus`) VALUES (?,?,?,?,?,?,?)");
+        $stmt -> bind_param("sssssss",$GET['studentNumber'],$GET['studentName'],$GET['studentMajor'],$GET['paperTitle'],$GET['paperTips'],$GET['prepareType'],$GET['prepareStatus']);
+        if ($stmt ->execute()){
+            $stmt2 = $conn -> prepare("UPDATE `userinfo` SET `subject`= ?,`status`= ? WHERE `username`=?");
+            if ($GET['prepareStatus']){
+                $status = "已完成开题";
+            } else {
+                $status = "请完善开题报告";
+            }
+            $stmt2 -> bind_param("sss",$GET['paperTitle'],$status,$GET['studentNumber']);
+            if ($stmt2 -> execute()){
+                $response = array("msg" => "2000");
+                $response = $this -> encodeJson($response);
+                echo $response;
+                return 0;
+            } else {
+                $response = array("msg" => "2001");
+                $response = $this -> encodeJson($response);
+                echo $response;
+                return 0;
+            }
+        } else {
+            $response = array("msg" => "2001");
+            $response = $this -> encodeJson($response);
+            echo $response;
+            return 0;
+        }
+    }
+
+    public function downloadPrepare($studentNumber):int{
+        $conn = new mysqli($this -> server,$this -> dbUser,$this -> dbPass,$this ->dbName);
+        $stmt = $conn -> prepare("SELECT studentName,studentMajor,paperTitle,paperTips,prepareStatus From prepareList WHERE studentNumber = ?");
+        $stmt -> bind_param("s",$studentNumber);
+        $stmt -> execute();
+        $stmt -> bind_result($studentName,$studentMajor,$paperTitle,$paperTips,$prepareStatus);
+        $stmt -> store_result();
+        $stmt -> fetch();
+        if ($stmt -> num_rows !=0){
+            $response = array("msg"=>"2000","studentName" => $studentName,"studentMajor" => $studentMajor,"paperTitle" => $paperTitle,"paperTips" => $paperTips,"prepareStatus"=>$prepareStatus);
+            $response = $this -> encodeJson($response);
+            echo $response;
+            return 0;
+        } else {
+            $response = array("msg"=>"2001");
+            $response = $this -> encodeJson($response);
+            echo $response;
+            return 0;
         }
     }
 

@@ -5,6 +5,10 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == null){
     $url = "https://bs.radiology.link/";
     header ( 'Location:' . $url );
 }
+<<<<<<< HEAD
+=======
+//TODO:create.php后端
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
 ?>
 <!DOCTYPE html>
 <html lang="zh" xmlns="http://www.w3.org/1999/html">
@@ -12,7 +16,11 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == null){
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<<<<<<< HEAD
     <title>新建题目</title>
+=======
+    <title>Home</title>
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/iconfonts/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
@@ -31,8 +39,36 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == null){
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
             <ul class="navbar-nav navbar-nav-right">
+<<<<<<< HEAD
                 <li class="nav-item">
                     <a class="nav-link" href="./create.php">
+=======
+                <li class="nav-item dropdown">
+                    <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+                        <i class="mdi mdi-bell-outline text-info"></i>
+                        <span class="count-symbol bg-danger"></span><!-- 新消息提示 -->
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+                        <h6 class="p-3 mb-0">消息提示</h6>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item preview-item">
+                            <div class="preview-thumbnail">
+                                <div class="preview-icon bg-warning">
+                                    <i class="mdi mdi-clock-alert"></i>
+                                </div>
+                            </div>
+                            <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                                <h6 class="preview-subject font-weight-normal mb-1">您有一个新消息</h6>
+                                <p class="text-gray ellipsis mb-0">
+                                    消息内容
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.php">
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
                         <i class="mdi mdi-cached text-success"></i>
                     </a>
                 </li>
@@ -60,6 +96,7 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == null){
                     </a>
                 </li>
                 <li class="nav-item">
+<<<<<<< HEAD
                     <a class = "nav-link" href="./studentmanage.php">
                         <span class="menu-title">设计题目管理</span>
                         <i class="mdi mdi-clipboard-text menu-icon"></i>
@@ -74,17 +111,65 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == null){
                 <li class="nav-item">
                     <a class="nav-link" href="./paperupload.php">
                         <span class="menu-title">论文申报/指导记录</span>
+=======
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                        <span class="menu-title">设计题目管理</span>
+                        <i class="menu-arrow"></i>
+                        <i class="mdi mdi-clipboard-text menu-icon"></i>
+                    </a>
+                    <div class="collapse" id="ui-basic">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages">
+                        <span class="menu-title">双向选择</span>
+                        <i class="menu-arrow"></i>
+                        <i class="mdi mdi-vector-intersection menu-icon"></i>
+                    </a>
+                    <div class="collapse" id="general-pages">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pages/icons/mdi.html">
+                        <span class="menu-title">论文申报</span>
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
                         <i class="mdi mdi-folder-upload menu-icon"></i>
                     </a>
                 </li>
                 <li class="nav-item">
+<<<<<<< HEAD
                     <a class="nav-link" href="./scorequery.php">
                         <span class="menu-title">历史成绩查询/申诉</span>
+=======
+                    <a class="nav-link" href="pages/forms/basic_elements.html">
+                        <span class="menu-title">指导记录</span>
+                        <i class="mdi mdi-chart-pie menu-icon"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pages/charts/chartjs.html">
+                        <span class="menu-title">历史成绩查询</span>
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
                         <i class="mdi mdi-chart-areaspline menu-icon"></i>
                     </a>
                 </li>
                 <li class="nav-item">
+<<<<<<< HEAD
                     <a class="nav-link" href="./graduate.php">
+=======
+                    <a class="nav-link" href="pages/tables/basic-table.html">
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
                         <span class="menu-title">毕业去向申请</span>
                         <i class="mdi mdi-flag-variant menu-icon"></i>
                     </a>
@@ -243,7 +328,11 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == null){
         static checkCreate(callback){
             <?php
             if ( isset($_SESSION['subject']) and $_SESSION['subject'] != "暂未申请" ){
+<<<<<<< HEAD
                 echo ' layer.alert("您已经新建论文！ ",{
+=======
+                echo ' layer.alert("您已经新建过论文啦 💜 ",{
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
                             title:"提示",
                             skin:"layui-layer-lan",
                             closeBtn:0,
@@ -294,7 +383,10 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == null){
             let formData = new FormData();
             formData.append("file",newFile);
             formData.append("filename",newFilename);
+<<<<<<< HEAD
             formData.append("fileDes","prepare");
+=======
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
             $.ajax({
                 type:"post",
                 url : "https://bs.radiology.link/api/uploadfile.php",
@@ -304,7 +396,11 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == null){
                 contentType:false,//不改文件头
                 cache:false,//上传文件不缓存
                 success : function(data){
+<<<<<<< HEAD
                     console.log(data); //打印data
+=======
+                    //console.log(data); //打印data
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
                     let msg = JSON.parse(data).msg;
                     if (msg === "3000"){
                         createOperate.formOperate(fileExtend,callback);
@@ -355,7 +451,10 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == null){
                 },
                 success:function (data){
                     let msg;
+<<<<<<< HEAD
                     console.log(data);
+=======
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
                     try{
                         console.log(data);
                         msg = JSON.parse(data).msg;

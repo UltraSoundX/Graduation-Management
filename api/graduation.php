@@ -57,6 +57,7 @@ switch($do){
         break;
 
     case "changePaper":
+<<<<<<< HEAD
         $RestHandler = new RestHandler();
         $RestHandler -> changePaper($_GET);
         break;
@@ -164,5 +165,9 @@ switch($do){
     case "appealModify":
         $RestHandler = new RestHandler();
         $RestHandler -> appealModify($_GET);
+=======
+        $RestHandler = new RestHandler();
+        $RestHandler -> changePaper($_GET);
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
         break;
 }

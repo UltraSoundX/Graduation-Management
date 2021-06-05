@@ -12,7 +12,11 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == null){
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<<<<<<< HEAD
     <title>题目更改</title>
+=======
+    <title>Home</title>
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/iconfonts/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
@@ -31,8 +35,36 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == null){
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
             <ul class="navbar-nav navbar-nav-right">
+<<<<<<< HEAD
                 <li class="nav-item">
                     <a class="nav-link" href="./studentmanage.php.php">
+=======
+                <li class="nav-item dropdown">
+                    <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+                        <i class="mdi mdi-bell-outline text-info"></i>
+                        <span class="count-symbol bg-danger"></span><!-- 新消息提示 -->
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+                        <h6 class="p-3 mb-0">消息提示</h6>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item preview-item">
+                            <div class="preview-thumbnail">
+                                <div class="preview-icon bg-warning">
+                                    <i class="mdi mdi-clock-alert"></i>
+                                </div>
+                            </div>
+                            <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                                <h6 class="preview-subject font-weight-normal mb-1">您有一个新消息</h6>
+                                <p class="text-gray ellipsis mb-0">
+                                    消息内容
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.php">
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
                         <i class="mdi mdi-cached text-success"></i>
                     </a>
                 </li>
@@ -66,25 +98,49 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == null){
                     </a>
                 </li>
                 <li class="nav-item">
+<<<<<<< HEAD
                     <a class="nav-link" href="./choose.php">
+=======
+                    <a class="nav-link" href="pages/icons/mdi.html">
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
                         <span class="menu-title">双向选择</span>
                         <i class="mdi mdi-vector-intersection menu-icon"></i>
                     </a>
                 </li>
                 <li class="nav-item">
+<<<<<<< HEAD
                     <a class="nav-link" href="./paperupload.php">
                         <span class="menu-title">论文申报/指导记录</span>
+=======
+                    <a class="nav-link" href="pages/icons/mdi.html">
+                        <span class="menu-title">论文申报</span>
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
                         <i class="mdi mdi-folder-upload menu-icon"></i>
                     </a>
                 </li>
                 <li class="nav-item">
+<<<<<<< HEAD
                     <a class="nav-link" href="./scorequery.php">
                         <span class="menu-title">历史成绩查询/申诉</span>
+=======
+                    <a class="nav-link" href="pages/forms/basic_elements.html">
+                        <span class="menu-title">指导记录</span>
+                        <i class="mdi mdi-chart-pie menu-icon"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pages/charts/chartjs.html">
+                        <span class="menu-title">历史成绩查询</span>
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
                         <i class="mdi mdi-chart-areaspline menu-icon"></i>
                     </a>
                 </li>
                 <li class="nav-item">
+<<<<<<< HEAD
                     <a class="nav-link" href="./graduate.php">
+=======
+                    <a class="nav-link" href="pages/tables/basic-table.html">
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
                         <span class="menu-title">毕业去向申请</span>
                         <i class="mdi mdi-flag-variant menu-icon"></i>
                     </a>
@@ -125,7 +181,11 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == null){
                                         <div class="form-group row">
                                             <label class="col-sm-4 col-form-label text-center" for = "studentName">姓   名</label>
                                             <div class="col-sm-8">
+<<<<<<< HEAD
                                                 <input type="text" class="form-control" id="studentName" placeholder="姓名" readonly/>
+=======
+                                                <input type="text" class="form-control" id="studentName" placeholder="姓名" onchange="listenChange($(this))"/>
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
                                             </div>
                                         </div>
                                     </div>
@@ -133,7 +193,11 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == null){
                                         <div class="form-group row">
                                             <label class="col-sm-4 col-form-label" for = "studentMajor">专   业</label>
                                             <div class="col-sm-8">
+<<<<<<< HEAD
                                                 <select class="form-control" id="studentMajor" disabled>
+=======
+                                                <select class="form-control" id="studentMajor" onchange="listenChange($(this))">
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
                                                     <option selected disabled style="display: none" value="none">请选择专业</option>
                                                 </select>
                                             </div>
@@ -142,7 +206,11 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == null){
                                 </div>
                                 <div class="form-group">
                                     <label for="paperTitle">论文题目</label>
+<<<<<<< HEAD
                                     <input type="text" class="form-control" id="paperTitle" placeholder="论文题目">
+=======
+                                    <input type="text" class="form-control" id="paperTitle" placeholder="论文题目" onchange="listenChange($(this))">
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
                                 </div>
                                 <div class="form-group row">
                                     <div class=" col-md-6">
@@ -159,7 +227,11 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == null){
                                     </div>
                                     <div class="col-md-6">
                                         <label for = "prepareStatus">开题报告完成状态</label>
+<<<<<<< HEAD
                                         <select id="prepareStatus" class="form-control">
+=======
+                                        <select id="prepareStatus" class="form-control" onchange="listenChange($(this))">
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
                                             <option selected disabled style="display: none" value="none">请选择开题报告完成进度</option>
                                             <option value="1">已完成</option>
                                             <option value="0">未完成</option>
@@ -168,7 +240,11 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == null){
                                 </div>
                                 <div class="form-group">
                                     <label for="paperTips" >备注</label>
+<<<<<<< HEAD
                                     <textarea class="form-control" id="paperTips" rows="4"></textarea>
+=======
+                                    <textarea class="form-control" id="paperTips" rows="4" onchange="listenChange($(this))"></textarea>
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
                                 </div>
                                 <div class="form-group text-center">
                                     <button type="submit" class="btn btn-gradient-primary btn-lg mr-2" onclick="createOperate.submit()" onmouseover="$(this).addClass('btn-gradient-danger')" onmouseleave="$(this).removeClass('btn-gradient-danger')">确认修改</button>
@@ -210,6 +286,11 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == null){
 <!--suppress JSUnfilteredForInLoop, JSUnusedAssignment -->
 <script type="text/javascript">
 
+<<<<<<< HEAD
+=======
+    var studentName = studentMajor = paperTitle = prepareStatus = paperTips = "before";
+
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
     $(document).ready(function () {
         new Promise(resolve => {
             layer.load(2);
@@ -220,14 +301,18 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == null){
                 layer.msg(res);
                 setTimeout(() => {window.location.href = "https://bs.radiology.link/login/create.php"},2000);
                 }
+<<<<<<< HEAD
             if (res === "已经完成双选，无法进行题目修改"){
                 layer.msg("已经完成双选，无法进行题目修改");
                 setTimeout(() => {window.location.href = "https://bs.radiology.link/login/index.php"},500);
             }
+=======
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
             layer.msg(res);
         })
     })
 
+<<<<<<< HEAD
     class pageReady {
         static checkChoose(callback){
             $.ajax({
@@ -249,6 +334,30 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == null){
 
         static downloadPrepare(callback){
             this.checkChoose(callback);
+=======
+    function listenChange(eol){
+        switch (eol[0].id){
+            case "studentName":
+                studentName = eol.val();
+                return 0;
+            case "studentMajor":
+                studentMajor = eol.val();
+                return 0;
+            case "paperTitle":
+                paperTitle = eol.val();
+                return 0;
+            case "prepareStatus":
+                prepareStatus = eol.val();
+                return 0;
+            case "paperTips":
+                paperTips = eol.val();
+                return 0;
+        }
+    }
+
+    class pageReady {
+        static downloadPrepare(callback){
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
             this.studentManage(callback);
             this.checkMajor();
             $.ajax({
@@ -313,7 +422,11 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == null){
 
             let fileName = file.val();
             if (fileName === ""){
+<<<<<<< HEAD
                 callback("文件名不能为空！");
+=======
+                createOperate.formOperate("before",callback);//TODO:未上传文件
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
                 return false;
             }
 
@@ -338,7 +451,10 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == null){
             let formData = new FormData();
             formData.append("file",newFile);
             formData.append("filename",newFilename);
+<<<<<<< HEAD
             formData.append("fileDes","prepare");
+=======
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
             $.ajax({
                 type:"post",
                 url : "https://bs.radiology.link/api/uploadfile.php",
@@ -348,6 +464,10 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == null){
                 contentType:false,//不改文件头
                 cache:false,//上传文件不缓存
                 success : function(data){
+<<<<<<< HEAD
+=======
+                    //console.log(data); //打印data
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
                     let msg = JSON.parse(data).msg;
                     if (msg === "3000"){
                         createOperate.formOperate(fileExtend,callback);
@@ -367,13 +487,28 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == null){
         static formOperate(prepareType,callback){
             let studentNumber = <?php echo $_SESSION['username'] ?>;
 
+<<<<<<< HEAD
+=======
+            let studentName = $("#studentName").val();
+            if (studentName === ""){callback('姓名不能为空喔😯！');}
+
+            let studentMajor = $("#studentMajor").val();
+            if (studentMajor === "none"){callback("专业必须选择喔😯！");}
+
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
             let paperTitle = $("#paperTitle").val();
             if (paperTitle === ""){callback("记得填写论文题目喔😯！");}
 
             let paperTips = $("#paperTips").val();
 
+<<<<<<< HEAD
             let prepareStatus = $("#prepareStatus").val();
             if (prepareStatus === ""){callback("记得选择完成状态喔😯！");}
+=======
+            let prepareStatus = $("#paperStatus").val();
+            if (prepareStatus === ""){callback("记得选择论文喔😯！");}
+
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
 
             $.ajax({
                 type:"GET",
@@ -382,6 +517,11 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == null){
                 data:{
                     "do":"changePaper",
                     "studentNumber":studentNumber,//学号
+<<<<<<< HEAD
+=======
+                    "studentName":studentName,//学生姓名
+                    "studentMajor":studentMajor,//所学专业
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
                     "paperTitle":paperTitle,//论文标题
                     "paperTips":paperTips,//论文备注
                     "prepareType":prepareType,//开题报告后缀
@@ -400,13 +540,21 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == null){
                     if (msg === "2001"){
                         callback("服务器出现故障，请联系管理员");
                     } else {
+<<<<<<< HEAD
                         layer.alert('修改题目成功！',{
+=======
+                        layer.alert('创建题目成功！',{
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
                             skin:"layui-layer-blue",
                             title:"恭喜！",
                             closeBtn:0,
                             anim:4
                         },function () {
+<<<<<<< HEAD
                             callback("修改完成！");
+=======
+                            callback("创建完成！");
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
                         });
                     }
                 },
@@ -421,7 +569,11 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == null){
                 layer.load(2);
                 createOperate.fileOperate(resolve);
             }).then(res => {
+<<<<<<< HEAD
                 if (res === "修改完成！") {
+=======
+                if (res === "创建完成！") {
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
                     layer.closeAll();
                     window.location.href = "https://bs.radiology.link/login/index.php";
                 } else {

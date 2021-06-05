@@ -273,6 +273,7 @@
         }
     }
 
+<<<<<<< HEAD
     new Promise(resolve => {
         layer.load(2);
         $(document).ready(function (){
@@ -286,6 +287,12 @@
         }
     )
 
+=======
+    $(document).ready(function () {
+        index_query();
+        overview();
+    })
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
 
     function index_query() {
         $.ajax({

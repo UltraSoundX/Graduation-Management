@@ -4,8 +4,11 @@
     session_start();
     if ($_GET['exit'] or !$_SESSION['username']){
         $_SESSION['username'] = null;
+<<<<<<< HEAD
         $_SESSION['teacherName'] = null;
         $_SESSION['teacherMajor'] = null;
+=======
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
     }
 ?>
 
@@ -36,12 +39,20 @@
 </head>
 <body>
 
+<<<<<<< HEAD
 <div class="container-fluid">
+=======
+<div class="container">
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
             <!-- Start Sign In Form -->
             <div class="fh5co-form animate-box" data-animate-effect="fadeIn">
+<<<<<<< HEAD
                 <h2 class="text-center">山东第一医科大学<br></br>毕业设计管理系统</h2>
+=======
+                <h2 class="text-center">山一医毕业设计管理系统</h2>
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
                 <div class="form-group">
                     <div class="alert alert-danger text-center" id = "LoginFail"></div>
                     <div class="alert alert-success text-center" id = "LoginSuccess"></div>
@@ -70,7 +81,11 @@
             <div class="col-md-12 text-center"><p><small>&copy; All Rights Reserved. </small></p></div>
         </div>
     </div>
+<<<<<<< HEAD
 
+=======
+</div>
+>>>>>>> 2ebda16bd7183c1bdb61d724c2b71d2b4fe193cb
 </body>
 
 <!-- jQuery -->
